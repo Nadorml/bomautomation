@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include bomautomation *.css
+recursive-include bomautomation *.csv
+recursive-include bomautomation *.html
+recursive-include bomautomation *.ico
+recursive-include bomautomation *.js
+recursive-include bomautomation *.json
+recursive-include bomautomation *.md
+recursive-include bomautomation *.png
+recursive-include bomautomation *.py
+recursive-include bomautomation *.svg
+recursive-include bomautomation *.txt
+recursive-exclude bomautomation *.pyc

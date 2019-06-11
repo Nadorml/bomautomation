@@ -1,0 +1,14 @@
+[
+ {
+  "docstatus": 0, 
+  "doctype": "Custom Script", 
+  "dt": "Sales Order", 
+  "modified": "2019-06-11 16:53:49.796754", 
+  "name": "Sales Order-Client", 
+  "parent": null, 
+  "parentfield": null, 
+  "parenttype": null, 
+  "script": "frappe.ui.form.on('Sales Order', {\n    generate_bom: function(frm) {\n\tvar item_grid = frm.fields_dict[\"items\"].grid;\n\tconsole.log(item_grid);\n\tconsole.log(item_grid.get_selected().length)\n\tif(item_grid.get_selected().length<=0){\n\t\tfrappe.throw(\"No Item Selected\")\n\t}\n        if(frm.doc.__islocal){\n\t\tfrappe.throw(\"Before Generate BOM Save Document First\")\n\t}\n\telse{\n\t\tfrappe.call({\n\t\t\tmethod:\"bomautomation.api.make_bom\",\n\t\t\targs:{'name':frm.doc.name,'selected_items':item_grid.get_selected()},\n\t\t\tfreeze:true,\n\t\t\tfreeze_message:\"Generating BOM\",\n\t\t\tcallback:function(r){\n\n\t\t\t\tconsole.log(r)\n\t\t\t}\n\n\t\t})\n\t}\n    } \n});", 
+  "script_type": "Client"
+ }
+]
